@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "/home/adiko/WORK/Projects/padp/firmware/gateway",
+    "clangd.arguments": [
+        "--query-driver=/usr/bin/arm-none-eabi-*"
+    ]
+}
