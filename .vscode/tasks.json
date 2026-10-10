@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "PADP: Build Gateway",
+            "type": "shell",
+            "command": "cmake --preset Debug && cmake --build --preset Debug",
+            "options": {
+                "cwd": "${workspaceFolder}/firmware/gateway"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "PADP: Flash Gateway",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "interface/stlink.cfg",
+                "-f",
+                "target/stm32g4x.cfg",
+                "-c",
+                "program build/Debug/gateway.elf verify reset exit"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/firmware/gateway"
+            },
+            "dependsOn": "PADP: Build Gateway",
+            "problemMatcher": []
+        }
+    ]
+}
